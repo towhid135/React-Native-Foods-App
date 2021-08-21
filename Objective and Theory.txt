@@ -1,0 +1,14 @@
+ 1#onPress = { () => props.navigation.navigate('MealDetailsScreen') }
+ navigate between screens
+ 2#onPress = { () => props.navigation.push('MealDetailsScreen') }
+ Same as 2# but the exception is shows animation if we go again and again 
+ to the current screen.
+ 3#onPress = { ()=> props.navigation.goBack () }
+ We can use this if we want to go back to the previous page after performing an
+ action like save, update etc.
+ 4#onPress={()=> props.navigation.replace('CategorieMealsScreen')}
+ Replace the current  screen with the given one and makes empty the whole
+ stack for that reason the backbutton disappeared and user can't go back. We can use
+ this feature for logout page.
+ #We need to use "useLayoutEffect" hook and props.navigation.setOptions to update the
+ "options" prop of a screen.
