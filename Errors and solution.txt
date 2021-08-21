@@ -1,0 +1,2 @@
+# Save button will not appear if we write the CustomHeaderButton component like
+this -> import {CustomHeaderButton}. We need to write without the curly braces.
