@@ -22,3 +22,5 @@ npm install @react-navigation/bottom-tabs@^5.x
 npm install @react-navigation/material-bottom-tabs react-native-paper
 #### For drawer navigator
 npm install @react-navigation/drawer@^5.x
+#### Redux installation
+npm install --save redux react-redux

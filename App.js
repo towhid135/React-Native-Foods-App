@@ -6,13 +6,25 @@ import AppLoading from 'expo-app-loading';
 import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {enableScreens} from 'react-native-screens';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import DrawerNavigator from './navigator/DrawerNavigator'
+import DrawerNavigator from './navigator/DrawerNavigator';
+import {createStore,combineReducers} from 'redux';
+import mealsReducer from './store/reducers/meals';
+import {Provider} from 'react-redux';
 
 /*props.navigation.push shows animation if we want to go to the currently running
 screen again and again */
 
 //it faster the code. needs to use in large projec
 enableScreens();
+
+const rootReducer = combineReducers({
+  user: mealsReducer,
+});
+
+const store = createStore(rootReducer);
+
+
+
 const fontFetch = () =>{
   return Font.loadAsync({
     'miglia': require('./assets/fonts/Miglia.ttf')
@@ -37,9 +49,11 @@ export default function App() {
   /* if we use component from other files then we can't wrapp the NavigationContainer
   with the View
    */
-  <NavigationContainer >
-     <DrawerNavigator />
-  </NavigationContainer>
+  <Provider store={store}>
+    <NavigationContainer >
+      <DrawerNavigator />
+    </NavigationContainer>
+  </Provider>
      
   );
 }
