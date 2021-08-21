@@ -7,7 +7,6 @@ import CustomHeaderButton from '../components/HeaderButton';
 
 
 const CategoriesScreen = props => {
-    //console.log(props);
     useLayoutEffect(() => {
         props.navigation.setOptions({
             headerLeft: () => {
