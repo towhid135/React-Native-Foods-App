@@ -4,6 +4,7 @@ import { CATEGORIES } from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile';
 import {HeaderButtons,Item} from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/HeaderButton';
+import {StackActions} from '@react-navigation/native'
 
 
 const CategoriesScreen = props => {
@@ -24,14 +25,15 @@ const CategoriesScreen = props => {
     //console.log(props);
     const renderGridItem = itemData =>{
         //console.log(itemData);
-        
-        return (<CategoryGridTile 
-            item={itemData.item}
-            onSelect = {() => props.navigation.navigate(
+        /*{() => props.navigation.navigate(
                 {name:'CategorieMealsScreen',params:{
                 itemId: itemData.item.id,}
-            }) }
-
+            }) } */
+        return (<CategoryGridTile 
+            item={itemData.item}
+            onSelect = {() => props.navigation.dispatch(
+                StackActions.push('CategorieMealsScreen', { itemId: itemData.item.id })
+              ) }
               />);
     }
     //console.log(props);

@@ -1,19 +1,21 @@
 import React,{useLayoutEffect} from 'react';
 import {View,Text,StyleSheet,FlatList} from 'react-native';
 import MealItem from '../components/MealItem';
-import { MEALS } from '../data/dummy-data';
 import Color from '../constants/Color';
 import CustomHeaderButton from '../components/HeaderButton';
 import {HeaderButtons,Item} from 'react-navigation-header-buttons'
+import {useSelector} from 'react-redux';
 const favoriteItemsId = ['m1','m2','m3','m8','m10'];
-const selectedFavoriteItem = [];
 
-for(FitemIndx in favoriteItemsId){
-    selectedFavoriteItem.push( MEALS.find((meal)=>  meal.id === favoriteItemsId[FitemIndx]  ) );
-}
+
+
 //console.log(selectedFavoriteItem);
 
 const FavoritesScreen = props => {
+    
+    const favMeals = useSelector((state) => state.meals.favoriteMeals)
+    //console.log(favMeals);
+
     const routeName = props.route.name;
     useLayoutEffect(() =>{
         props.navigation.setOptions({
@@ -48,7 +50,7 @@ const FavoritesScreen = props => {
     }
     return (
         <FlatList 
-         data = {selectedFavoriteItem}
+         data = {favMeals}
          keyExtractor = {(item,index)=> item.id}
          renderItem = {renderFavoriteItem}
         />

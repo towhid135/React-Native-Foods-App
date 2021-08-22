@@ -1,17 +1,28 @@
-import React,{useLayoutEffect,useState} from 'react';
+import React,{useLayoutEffect,useState,useEffect,useCallback} from 'react';
 import {View,Text,StyleSheet,Button,FlatList} from 'react-native';
-import {MEALS} from '../data/dummy-data'
 import MealDetail from '../components/MealDetail';
 import CustomHeaderButton from '../components/HeaderButton';
 import { HeaderButtons,Item } from 'react-navigation-header-buttons';
 import Color from '../constants/Color';
+import {useSelector, useDispatch} from 'react-redux';
+import {toggleFavorite} from '../store/actions/actionMeals'
 
 const MealDetailScreen = props => {
+    const availableMeals = useSelector((state) => state.meals.meals);
     const selectedMealId = props.route.params.mealId;
-    const selectedMeal = MEALS.find((meal) => meal.id === selectedMealId);
+    const selectedMeal = availableMeals.find((meal) => meal.id === selectedMealId);
     const [loveButton,setLoveButton] = useState(false);
-    //console.log(selectedMeal.id);
+
+
     const routeName = props.route.name;
+
+    const dispatch = useDispatch();
+    
+    const toggleFavoriteHandler = useCallback( () => {
+        console.log('entered into toggleFavoriteHandler');
+        setLoveButton(!loveButton);
+        dispatch(toggleFavorite(selectedMealId));
+    },[selectedMealId,dispatch]);
 
     useLayoutEffect(()=>{
         props.navigation.setOptions({
@@ -25,7 +36,7 @@ const MealDetailScreen = props => {
                     title='favorite' 
                     iconName='ios-heart' 
                     color= {loveButton ? Color.darkPink : 'white'}
-                    onPress={()=>{setLoveButton(!loveButton)}} 
+                    onPress={toggleFavoriteHandler} 
                     />
                 </HeaderButtons>
               ),

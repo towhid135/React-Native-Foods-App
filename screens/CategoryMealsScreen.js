@@ -1,7 +1,9 @@
 import React,{useLayoutEffect} from 'react';
 import {View,Text,StyleSheet,Button,FlatList} from 'react-native';
-import {CATEGORIES,MEALS} from '../data/dummy-data';
+import {CATEGORIES} from '../data/dummy-data';
 import MealItem from '../components/MealItem';
+import { useSelector } from 'react-redux'; /*it allows us to manage a slice of globaly manage
+state that means we can use data from store*/
 
 const CategoryMealsScreen = props => {
     const renderMealItem = (itemData) => {
@@ -11,13 +13,15 @@ const CategoryMealsScreen = props => {
         }})}} 
         />);
     };
-
+   
+    /* useSelector gets the state as an argument from reat-redux */
+    const availableMeals = useSelector((state) => state.meals.filteredMeals )
     //console.log(props);
     const selectedItemId = props.route.params['itemId'];
     //finding selected category
     const selectedCategory = CATEGORIES.find((cat) => cat.id === selectedItemId);
     //finding meals for the selected category
-    const selectedMeals = MEALS.filter( (meal)=> meal.categoryIds.indexOf(selectedItemId) >= 0 );
+    const selectedMeals = availableMeals.filter( (meal)=> meal.categoryIds.indexOf(selectedItemId) >= 0 );
     
 
     useLayoutEffect(()=>{

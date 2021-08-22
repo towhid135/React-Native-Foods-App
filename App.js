@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState,useRef} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import {NavigationContainer, StackActions} from '@react-navigation/native';
@@ -18,7 +18,7 @@ screen again and again */
 enableScreens();
 
 const rootReducer = combineReducers({
-  user: mealsReducer,
+  meals: mealsReducer,
 });
 
 const store = createStore(rootReducer);
