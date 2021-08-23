@@ -5,6 +5,7 @@ import Color from '../constants/Color';
 import CustomHeaderButton from '../components/HeaderButton';
 import {HeaderButtons,Item} from 'react-navigation-header-buttons'
 import {useSelector} from 'react-redux';
+import DefaultText from '../components/DefaultText';
 const favoriteItemsId = ['m1','m2','m3','m8','m10'];
 
 
@@ -48,6 +49,16 @@ const FavoritesScreen = props => {
             />
         );
     }
+
+    if (favMeals.length === 0 || !favMeals){
+        return(
+        <View style = {styles.textView}>
+            <DefaultText>
+                There is no favorite meals, try adding some!
+            </DefaultText>
+        </View>);
+    }
+
     return (
         <FlatList 
          data = {favMeals}
@@ -59,6 +70,11 @@ const FavoritesScreen = props => {
 
 const styles = StyleSheet.create({
     screen: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    textView:{
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',

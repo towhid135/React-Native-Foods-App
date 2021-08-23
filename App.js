@@ -14,7 +14,7 @@ import {Provider} from 'react-redux';
 /*props.navigation.push shows animation if we want to go to the currently running
 screen again and again */
 
-//it faster the code. needs to use in large projec
+//it faster the code. needs to use in large project
 enableScreens();
 
 const rootReducer = combineReducers({

@@ -13,13 +13,28 @@ const MealDetailScreen = props => {
     const selectedMeal = availableMeals.find((meal) => meal.id === selectedMealId);
     const [loveButton,setLoveButton] = useState(false);
 
+    /* if the selectedMealId is inside of the favorite meals list then the
+    loveButton will be red, else it will remain white
+     */
+    const favMeals = useSelector((state) => state.meals.favoriteMeals);
+    useLayoutEffect( () => {
+    if( (favMeals.find((fMeals) => fMeals.id === selectedMealId ) ) ){
+        setLoveButton(true);
+    } else{
+        setLoveButton(false);
+    }
+   }
+    );
+
 
     const routeName = props.route.name;
 
     const dispatch = useDispatch();
-    
+    /*When you dispatch an action creator it passes the action object to the root 
+    reducer. The action object is passed through the entire state tree and any 
+    reducers that process the action type consume it.*/
     const toggleFavoriteHandler = useCallback( () => {
-        console.log('entered into toggleFavoriteHandler');
+        //console.log('entered into toggleFavoriteHandler');
         setLoveButton(!loveButton);
         dispatch(toggleFavorite(selectedMealId));
     },[selectedMealId,dispatch]);
@@ -34,7 +49,7 @@ const MealDetailScreen = props => {
                 <HeaderButtons HeaderButtonComponent={CustomHeaderButton} >
                     <Item 
                     title='favorite' 
-                    iconName='ios-heart' 
+                    iconName={loveButton ? 'ios-heart' : 'ios-heart-outline'} 
                     color= {loveButton ? Color.darkPink : 'white'}
                     onPress={toggleFavoriteHandler} 
                     />
