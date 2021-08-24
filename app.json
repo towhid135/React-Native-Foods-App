@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "foodsApp",
+    "name": "Fodds App",
     "slug": "foodsApp",
+    "description": "This a simple food app, here we can see all the basic functionality of a food store.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
