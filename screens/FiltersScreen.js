@@ -4,6 +4,8 @@ import DefaultText from '../components/DefaultText';
 import FilterComponent from '../components/FilterComponent';
 import {HeaderButtons,Item} from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/HeaderButton';
+import { setFilters } from '../store/actions/actionMeals';
+import {useDispatch} from 'react-redux';
 
 const FiltersScreen = props => {
     //console.log(props.route);
@@ -12,15 +14,18 @@ const FiltersScreen = props => {
     const [isVegan,setIsVegan] = useState(false);
     const [isVegetarian,setIsVegetarian] = useState(false);
 
-    useEffect(() => {
+    const dispatch = useDispatch();
+
+    const saveFilters = useCallback(() => {
         const appliedFilters = {
             isGlutenFree: isGluten,
             isLactoseFree: isLactose,
             vegan: isVegan,
             vegetarian: isVegetarian,
         } 
-        props.navigation.setParams({save:appliedFilters})
-    },[isGluten,isLactose,isVegan,isVegetarian]);
+        dispatch(setFilters(appliedFilters));
+        //props.navigation.setParams({save:appliedFilters})
+    },[isGluten,isLactose,isVegan,isVegetarian,dispatch]);
 
 
     useLayoutEffect(() => {
@@ -31,7 +36,7 @@ const FiltersScreen = props => {
                     title='save' 
                     iconName='ios-save' 
                     color= "white"
-                    onPress={()=>{console.log(props.route.params.save)}} 
+                    onPress={saveFilters} 
                     />
                 </HeaderButtons>
               ),

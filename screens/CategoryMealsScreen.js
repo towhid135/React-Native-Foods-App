@@ -4,6 +4,7 @@ import {CATEGORIES} from '../data/dummy-data';
 import MealItem from '../components/MealItem';
 import { useSelector } from 'react-redux'; /*it allows us to manage a slice of globaly manage
 state that means we can use data from store*/
+import DefaultText from '../components/DefaultText';
 
 const CategoryMealsScreen = props => {
     const renderMealItem = (itemData) => {
@@ -22,6 +23,16 @@ const CategoryMealsScreen = props => {
     const selectedCategory = CATEGORIES.find((cat) => cat.id === selectedItemId);
     //finding meals for the selected category
     const selectedMeals = availableMeals.filter( (meal)=> meal.categoryIds.indexOf(selectedItemId) >= 0 );
+
+    if (selectedMeals.length <= 0){
+        return(
+            <View style={styles.textContainer}>
+                <DefaultText>
+                    The meal is not available. May be you should check the filter!
+                </DefaultText>
+            </View>
+        );
+    }
     
 
     useLayoutEffect(()=>{
@@ -47,6 +58,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    textContainer:{
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 
 })

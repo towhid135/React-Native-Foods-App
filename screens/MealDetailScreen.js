@@ -5,7 +5,7 @@ import CustomHeaderButton from '../components/HeaderButton';
 import { HeaderButtons,Item } from 'react-navigation-header-buttons';
 import Color from '../constants/Color';
 import {useSelector, useDispatch} from 'react-redux';
-import {toggleFavorite} from '../store/actions/actionMeals'
+import {toggleFavorite} from '../store/actions/actionMeals';
 
 const MealDetailScreen = props => {
     const availableMeals = useSelector((state) => state.meals.meals);
