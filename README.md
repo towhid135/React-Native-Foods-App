@@ -1,4 +1,3 @@
-This is a food store app where I have tried to build all the basic functionality of a food store. In this app, I have used react-navigation, drawer navigator, material bottom tab navigator, different kinds of React hooks, redux, custom font, vector icons, etc.
 # Store
 
 This is a food store app where I have tried to build all the basic functionality of a food store Features of this application are given below:
@@ -32,11 +31,11 @@ The objective of this project is to learn:
 
 ## Screenshots
 
-SignUp             |  SignIn          | Products List
+Food Category             |  Summer Foods          | Details
 :-------------------------:|:-------------------------:|:-------------------------
-![](https://github.com/towhid135/React-Native-StoreApp/blob/main/screenshots/Signup.jpg)  |  ![](https://github.com/towhid135/React-Native-StoreApp/blob/main/screenshots/Login.jpg) |  ![](https://github.com/towhid135/React-Native-StoreApp/blob/main/screenshots/Product-list.jpg)
+![](https://github.com/towhid135/React-Native-Foods-App/blob/main/screenshots/Category.jpg)  |  ![](https://github.com/towhid135/React-Native-Foods-App/blob/main/screenshots/Summer-Foods.jpg) |  ![](https://github.com/towhid135/React-Native-Foods-App/blob/main/screenshots/Details.jpg)
 
-Add Product             |  Edit Product          | Delete Product
+Favorite Foods             |  Filter          | Drawer Nav
 :-------------------------:|:-------------------------:|:-------------------------
-![](https://github.com/towhid135/React-Native-StoreApp/blob/main/screenshots/Product-Add.jpg) |  ![](https://github.com/towhid135/React-Native-StoreApp/blob/main/screenshots/Product-Edit.jpg) |  ![](https://github.com/towhid135/React-Native-StoreApp/blob/main/screenshots/Product-Delete.jpg)
+![](https://github.com/towhid135/React-Native-Foods-App/blob/main/screenshots/Favorite.jpg) |  ![](https://github.com/towhid135/React-Native-Foods-App/blob/main/screenshots/Filter.jpg) |  ![](https://github.com/towhid135/React-Native-Foods-App/blob/main/screenshots/Drawer.jpg)
 
