@@ -1,5 +1,5 @@
 # Store
-
+##### Expo Published Link: https://expo.dev/@towhid135/foodsApp
 This is a food store app where I have tried to build all the basic functionality of a food store Features of this application are given below:
 * Users can find **foods of different categories**.
 * Each category has a **list of foods**.
